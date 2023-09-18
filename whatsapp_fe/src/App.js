@@ -3,9 +3,12 @@ import './index.css';
 import Home from './pages/home';
 import Login from './pages/login';
 import Register from './pages/register';
+import {  useSelector } from 'react-redux';
 // import { ChatIcon } from "./svg";
 
 function App() {
+  const {user}=useSelector((state)=>state.user);
+  console.log(user)
   return (
     <div className="dark">
       <Router>
