@@ -1,12 +1,10 @@
 import './index.css';
-
-import { ChatIcon } from "./svg";
+// import { ChatIcon } from "./svg";
 
 function App() {
   return (
-    <div className="">
-      <h1>hello from font end</h1>
-      <ChatIcon className="red"/>
+    <div className="dark">
+      <h1 className='custumh1'>Ilove tailwindcss</h1>
     </div>
   );
 }
