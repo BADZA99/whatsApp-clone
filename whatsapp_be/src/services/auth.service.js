@@ -44,6 +44,9 @@ export const createUser=async(userData)=>{
         throw createHttpError.BadRequest(" Your Password must be between 6 and 128 characters");
     }
 
+    // hash password --->to be done in th user model
+    
+
     // add new user
     const user= await new UserModel({
         name,
