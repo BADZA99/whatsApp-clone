@@ -1,9 +1,10 @@
 import createHttpError from "http-errors";
 import validator from "validator";
 import {UserModel} from "../models/index.js";
+import bcrypt from 'bcrypt'
 
 
-// ENV VARIBLES
+// ENV VARIABLES
 const { DEFAULT_PICTURE, DEFAULT_STATUS } = process.env;
 export const createUser=async(userData)=>{
     const { name, email, picture, status, password } = userData;
@@ -45,7 +46,7 @@ export const createUser=async(userData)=>{
     }
 
     // hash password --->to be done in th user model
-    
+
 
     // add new user
     const user= await new UserModel({
@@ -61,4 +62,18 @@ export const createUser=async(userData)=>{
 
 
 
+};
+
+export const signUser = async (email, password) => {
+  const user = await UserModel.findOne({ email:email.toLowerCase() }).lean();
+//   check if user exist
+    if (!user) {
+        throw createHttpError.NotFound("User not registered");
+    }
+// check if password match
+    const passwordMatches=await bcrypt.compare(password,user.password);
+    if (!passwordMatches) {
+        throw createHttpError.Unauthorized("Username/password not valid");
+    }
+    return user;
 };
