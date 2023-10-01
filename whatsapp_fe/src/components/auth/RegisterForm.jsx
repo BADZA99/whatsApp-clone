@@ -2,9 +2,13 @@ import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import { signUpSchema } from '../../utils/validation';
 import AuthInput from './AuthInput';
+import { useSelector } from 'react-redux';
+import   PulseLoader  from 'react-spinners/PulseLoader';
+import { Link } from 'react-router-dom';
 
 
 export default function RegisterForm() {
+  const {status}=useSelector((state)=>state.user);
     const {
     register,
     handleSubmit,
@@ -13,7 +17,7 @@ export default function RegisterForm() {
   } = useForm({
     resolver: yupResolver(signUpSchema),
   });
-  // const onSubmit=(data) => console.log(data);
+  const onSubmit=(data) => console.log(data);
 //   console.log("values",watch());
 //   console.log("errors",errors);
   return (
@@ -26,7 +30,7 @@ export default function RegisterForm() {
                 <p className="mt-2 text-sm">Sign up</p>
             </div>
         {/* form */}
-        <form onSubmit={handleSubmit()} className="mt-6 space-y-6">
+        <form onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-6">
             <AuthInput
             name="name"
             type="text"
@@ -55,8 +59,19 @@ export default function RegisterForm() {
             register={register}
             errors={errors?.password?.message}
             />
-
-            <button type='submit'>submit</button>
+          {/* sunbmit button */}
+            <button 
+            className="w-full flex justify-center bg-green_1 text-gray-100 p-4 rounded-full tracking-wide font-semibold focus:outline-none hover:bg-green_2 shadow-lg cursor-pointer transition ease-in duration-300"
+            type='submit'>
+              {status ==="loading" ? <PulseLoader color="#fff" size={16} /> :"Sign up"}
+            </button>
+            {/* sign in link */}
+            <p className='flex flex-col items-center justify-center mt-0 text-center text-md dark:text-dark_text_1'>
+                <span>Already have an account?</span>
+                <Link to="/login" className='hover:underline cursor-pointer'>
+                    Sign in
+                </Link>
+            </p>
         </form>
         </div>
     </div>
