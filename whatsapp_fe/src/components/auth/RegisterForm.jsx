@@ -1,6 +1,8 @@
 import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import { signUpSchema } from '../../utils/validation';
+import AuthInput from './AuthInput';
+
 
 export default function RegisterForm() {
     const {
@@ -11,9 +13,9 @@ export default function RegisterForm() {
   } = useForm({
     resolver: yupResolver(signUpSchema),
   });
-  const onSubmit=(data) => console.log(data);
-  console.log("values",watch());
-  console.log("errors",errors);
+  // const onSubmit=(data) => console.log(data);
+//   console.log("values",watch());
+//   console.log("errors",errors);
   return (
     <div className="h-screen w-full flex items-center justify-center overflow-hidden">
         {/* container */}
@@ -25,7 +27,35 @@ export default function RegisterForm() {
             </div>
         {/* form */}
         <form onSubmit={handleSubmit()} className="mt-6 space-y-6">
-            <input type="text" {...register("name")} />
+            <AuthInput
+            name="name"
+            type="text"
+            placeholder="Name"
+            register={register}
+            errors={errors?.name?.message}
+            />
+            <AuthInput
+            name="email"
+            type="email"
+            placeholder="Email"
+            register={register}
+            errors={errors?.email?.message}
+            />
+            <AuthInput
+            name="status"
+            type="text"
+            placeholder="status"
+            register={register}
+            errors={errors?.status?.message}
+            />
+            <AuthInput
+            name="password"
+            type="password"
+            placeholder="Password"
+            register={register}
+            errors={errors?.password?.message}
+            />
+
             <button type='submit'>submit</button>
         </form>
         </div>
