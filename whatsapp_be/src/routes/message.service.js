@@ -1,3 +1,4 @@
+import createHttpError from "http-errors";
 import {MessageModel} from "../models/index.js"
 
 export const createMessage=async(data)=>{
@@ -29,4 +30,15 @@ export const populateMessage=async(id)=>{
         throw createHttpError.BadRequest("oops...Something went wrong");
     }
     return msg;
+}
+
+export const getConvoMessages=async (convo_id)=>{
+    const messages = await MessageModel.find({ converstaion: convo_id })
+      .populate("sender","name picture email status")
+      .populate("conversation");
+    if(!messages){
+        throw createHttpError.BadRequest("oops...Something went wrong");
+    }
+    // console.log(messages)
+    return messages;
 }
