@@ -7,7 +7,7 @@ import { findUser } from "../services/user.service.js";
 export const register =async (req,res,next)=>{
     try{
         const {name ,email,picture,status,password}  = req.body;
-        console.log(name,email,picture,status,password);
+        console.log(req.body);
         const newUser = await createUser({
           name,
           email,
@@ -35,7 +35,6 @@ export const register =async (req,res,next)=>{
         });
 
         // console.table({access_token,refresh_token})
-
         res.json({
             message:"register success",
             user:{

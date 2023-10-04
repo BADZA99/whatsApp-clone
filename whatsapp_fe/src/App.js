@@ -7,8 +7,8 @@ import {  useSelector } from 'react-redux';
 // import { ChatIcon } from "./svg";
 
 function App() {
-  const {user}=useSelector((state)=>state.user);
-  console.log(user)
+  // const {user}=useSelector((state)=>state.user);
+  // console.log(user)
   return (
     <div className="dark">
       <Router>

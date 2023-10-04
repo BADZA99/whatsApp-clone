@@ -2,26 +2,40 @@ import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import { signUpSchema } from '../../utils/validation';
 import AuthInput from './AuthInput';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import   PulseLoader  from 'react-spinners/PulseLoader';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { registerUser } from '../../features/userSlice';
+import { useState } from 'react';
+import Picture from '../Picture';
 
 
 export default function RegisterForm() {
-  const {status}=useSelector((state)=>state.user);
+  const dispatch=useDispatch();
+  const navigate=useNavigate();
+  const {status,error}=useSelector((state)=>state.user);
+  const [picture,setPicture]=useState();
+  const [readablePicture,setReadablePicture]=useState();
     const {
     register,
     handleSubmit,
-    watch,
+    // watch,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(signUpSchema),
   });
-  const onSubmit=(data) => console.log(data);
+  const onSubmit= async(data) => {
+    let res=await dispatch(registerUser({...data,picture:""}));
+    console.log(res);
+    if(res.payload.user){
+      navigate('/');
+    }
+  };
+  console.log(picture,readablePicture)
 //   console.log("values",watch());
 //   console.log("errors",errors);
   return (
-    <div className="h-screen w-full flex items-center justify-center overflow-hidden">
+    <div className="min-h-screen w-full flex items-center justify-center overflow-hidden">
         {/* container */}
         <div className="w-full max-w-md space-y-8 p-10 dark:bg-dark_bg_2 rounded-xl">
         {/* heading */}
@@ -48,7 +62,7 @@ export default function RegisterForm() {
             <AuthInput
             name="status"
             type="text"
-            placeholder="status"
+            placeholder="status (optional)"
             register={register}
             errors={errors?.status?.message}
             />
@@ -59,6 +73,20 @@ export default function RegisterForm() {
             register={register}
             errors={errors?.password?.message}
             />
+            {/* picture */}
+            <Picture 
+            readablePicture={readablePicture}
+            setReadablePicture={setReadablePicture}
+            setPicture={setPicture}
+            />
+            {/* if we have an error  */}
+            {
+              error ? (
+                <div>
+                  <p className="text-red-400">{error}</p>
+                </div>
+              ):null
+            }
           {/* sunbmit button */}
             <button 
             className="w-full flex justify-center bg-green_1 text-gray-100 p-4 rounded-full tracking-wide font-semibold focus:outline-none hover:bg-green_2 shadow-lg cursor-pointer transition ease-in duration-300"
