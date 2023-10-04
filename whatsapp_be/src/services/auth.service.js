@@ -73,7 +73,7 @@ export const signUser = async (email, password) => {
 // check if password match
     const passwordMatches=await bcrypt.compare(password,user.password);
     if (!passwordMatches) {
-        throw createHttpError.Unauthorized("Username/password not valid");
+        throw createHttpError.Unauthorized("Username or password not valid");
     }
     return user;
 };

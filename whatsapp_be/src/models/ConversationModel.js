@@ -4,7 +4,7 @@ const {ObjectId} = mongoose.Schema.Types;
 const conversationSchema=mongoose.Schema({
     name:{
         type:String,
-        required:[true,"conversation is required"],
+        required:[true,"conversation name is required"],
         trim:true,
     },
     isGroup:{
@@ -39,4 +39,6 @@ const conversationSchema=mongoose.Schema({
 const ConversationModel =
   mongoose.models.ConversationModel ||
   mongoose.model("ConversationModel", conversationSchema);
-export default ConversationModel;
+
+
+  export default ConversationModel;
