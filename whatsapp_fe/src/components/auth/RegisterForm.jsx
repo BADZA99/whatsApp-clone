@@ -52,7 +52,7 @@ export default function RegisterForm() {
     formData.append('upload_preset',cloud_secret)
     formData.append('file',picture);
     const {data}=await axios.post(`https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`,formData);
-    console.log(data);
+    // console.log(data);
     return data;
   }
   // console.log(picture,readablePicture)
