@@ -7,6 +7,11 @@ const conversationSchema=mongoose.Schema({
         required:[true,"conversation name is required"],
         trim:true,
     },
+    picture:{
+        type:String,
+        required:true,
+        // default:"https://w7.pngwing.com/pngs/81/570/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo-thumbnail.png",
+    },
     isGroup:{
         type:Boolean,
         required:true,
