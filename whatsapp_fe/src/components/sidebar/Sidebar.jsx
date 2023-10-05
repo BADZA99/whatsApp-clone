@@ -1,5 +1,6 @@
 import React from 'react'
 import { SidebarHeader } from './header'
+import Notification from './notifications/Notifications'
 
 export default function Sidebar() {
   return (
@@ -8,6 +9,8 @@ export default function Sidebar() {
     >
         {/* Sidebar header */}
       <SidebarHeader/>
+      {/*notifications */}
+      <Notification/>
     </div>
   )
 }
