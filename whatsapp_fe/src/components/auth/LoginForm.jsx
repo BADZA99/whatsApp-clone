@@ -5,6 +5,7 @@ import AuthInput from './AuthInput';
 import { useDispatch, useSelector } from 'react-redux';
 import   PulseLoader  from 'react-spinners/PulseLoader';
 import { Link, useNavigate } from 'react-router-dom';
+import { loginUser } from '../../features/userSlice';
 // import { changeStatus, loginUser, registerUser } from '../../features/userSlice';
 // import { useState } from 'react';
 // import axios from 'axios';
