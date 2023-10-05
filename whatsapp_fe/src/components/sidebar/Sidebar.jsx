@@ -3,6 +3,7 @@ import { SidebarHeader } from './header'
 import Notifications from './notifications/Notifications'
 import { Search } from './search'
 import { useState } from 'react'
+import { Conversations } from './conversations'
 
 export default function Sidebar() {
     const [searchResults,setSearchResults]=useState([])
@@ -16,6 +17,8 @@ export default function Sidebar() {
       <Notifications/>
       {/* search */}
       <Search searchLength={searchResults.length}/>
+      {/* conversations */}
+      <Conversations/>
 
     </div>
   )
