@@ -28,7 +28,7 @@ export default function RegisterForm() {
     resolver: yupResolver(signUpSchema),
   });
   const onSubmit= async(data) => {
-    let res;
+    // let res;
     dispatch(changeStatus('loading'));
     if(picture){
       // upload to cloudnary and then register user

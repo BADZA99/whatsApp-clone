@@ -6,7 +6,8 @@ import { useState } from 'react'
 import { Conversations } from './conversations'
 
 export default function Sidebar() {
-    const [searchResults,setSearchResults]=useState([])
+    const [searchResults,setSearchResults]=useState([]);
+    console.log(searchResults);
   return (
     <div
     className='w-[40%] h-full select-none'
@@ -16,7 +17,7 @@ export default function Sidebar() {
       {/*notifications */}
       <Notifications/>
       {/* search */}
-      <Search searchLength={searchResults.length}/>
+      <Search searchLength={searchResults.length} setSearchResults={setSearchResults} />
       {/* conversations */}
       <Conversations/>
 
