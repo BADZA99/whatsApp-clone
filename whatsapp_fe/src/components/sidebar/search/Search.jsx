@@ -61,7 +61,6 @@ export default function Search({searchLength,setSearchResults}) {
                 <FilterIcon className="dark:fill-dark_svg_2"/>
             </button>
         </div>
-
       </div>
     </div>
   )

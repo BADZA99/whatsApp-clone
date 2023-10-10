@@ -5,7 +5,7 @@ import Login from './pages/login';
 import Register from './pages/register';
 import {  useSelector } from 'react-redux';
 // import { ChatIcon } from "./svg";
-// import socket
+// import socket from 'socket'
 
 
 function App() {

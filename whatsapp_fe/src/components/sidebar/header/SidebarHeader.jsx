@@ -1,9 +1,13 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
+import {  useSelector } from 'react-redux';
 import { ChatIcon, CommunityIcon, DotsIcon, StoryIcon } from '../../../svg';
+import Menu from './Menu';
+import { useState } from 'react';
 
 export default function SidebarHeader() {
     const {user}=useSelector((state)=>state.user);
+    const [showMenu,setShowMenu]=useState(false);
+
   return (
     <div className='h-[50px] dark:bg-dark_bg_2 flex items-center p16'>
         {/* container */}
@@ -30,10 +34,14 @@ export default function SidebarHeader() {
                         <ChatIcon className="dark:fill-dark_svg_1"/>
                     </button>
                 </li>
-                <li>
-                    <button className='btn'>
+                <li className='relative' onClick={()=>setShowMenu(!showMenu)}>
+                    <button className={`btn ${showMenu ? 'bg-dark_hover_1':''}`}>
                         <DotsIcon className="dark:fill-dark_svg_1"/>
                     </button>
+
+                    {
+                        showMenu ? <Menu/> : null
+                    }
                 </li>
             </ul>
         </div>

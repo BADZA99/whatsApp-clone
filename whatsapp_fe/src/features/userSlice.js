@@ -48,6 +48,20 @@ export const userSlice=createSlice({
                 status:"",
                 token:"",
             };
+        }
+    },
+    reducers:{
+        logout:(state)=>{
+            state.status="";
+            state.error="";
+            state.user={
+                id:"",
+                name:"",
+                email:"",
+                picture:"",
+                status:"",
+                token:"",
+            };
         },
         changeStatus:(state,action)=>{
             state.status=action.payload;
