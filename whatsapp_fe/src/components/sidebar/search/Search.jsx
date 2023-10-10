@@ -9,14 +9,18 @@ export default function Search({searchLength,setSearchResults}) {
   const {token}=user;
     const [show,setShow]=useState(false);
     const handleSearch= async (e)=>{
-        if(e.target.value && e.key==="Enter"){
+      if(e.target.value && e.key==="Enter"){
+          console.log(e.target.value)
+          console.log("just cliked enter")
             try {
               const {data}=await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/user?search=${e.target.value}`,{
                 headers:{
                   Authorization: `Bearer ${token}`
                 }
-              });
+              },
+              );
               setSearchResults(data);
+              console.log(data);
             } catch (error) {
               console.log(error);
               console.log(error.reponse.data.error.message)
