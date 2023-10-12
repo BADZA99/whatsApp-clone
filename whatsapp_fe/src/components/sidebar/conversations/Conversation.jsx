@@ -6,7 +6,6 @@ import { getConversationId } from '../../../utils/chat.js';
 import { capitalize } from '../../../utils/strings';
 
 export default function Conversation({convo}) {
-    {/* Open or create a conversation */}
     const dispatch=useDispatch();
     const {user}=useSelector((state)=>state.user);
     const {token}=user;

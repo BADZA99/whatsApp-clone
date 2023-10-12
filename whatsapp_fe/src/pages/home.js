@@ -9,13 +9,12 @@ export default function Home() {
   const dispatch=useDispatch();
   const {user}=useSelector((state)=>state.user);
   const { activeConversation } = useSelector((state) => state.chat);
-  // console.log("activeconv",activeConversation)
+  // console.log("activeconv", activeConversation);
   // get conversations
   useEffect(()=>{
     if(user){
       dispatch(getConversations(user.token));
     }
-
   },[user]);
   return (
     <div className="h-screen dark:bg-dark_bg_1 flex items-center justify-start py-[19px] overflow-hidden">
