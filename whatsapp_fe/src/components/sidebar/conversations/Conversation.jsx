@@ -3,6 +3,7 @@ import { dateHandler } from '../../../utils/date';
 import { useDispatch, useSelector } from 'react-redux';
 import { open_create_conversation } from '../../../features/chatSlice';
 import { getConversationId } from '../../../utils/chat.js';
+import { capitalize } from '../../../utils/strings';
 
 export default function Conversation({convo}) {
     {/* Open or create a conversation */}
@@ -12,7 +13,6 @@ export default function Conversation({convo}) {
     const values = {
         receiver_id:getConversationId(user,convo.users),
         token,
-
     }
     const openConversation = () => {
        dispatch(open_create_conversation(values)) 
@@ -30,7 +30,7 @@ export default function Conversation({convo}) {
                 {/* conversation name and message */}
                 <div className="flex flex-col">
                     {/* conversation name */}
-                    <h1 className="text-sm font-bold">{convo.name}</h1>
+                    <h1 className="text-sm font-bold">{capitalize(convo.name)}</h1>
                     {/* conversation message */}
                     <div>
                         <div className="flex items-center gap-x-1 dark:text-dark_text_2">
