@@ -4,7 +4,8 @@ import Message from './Message';
 
 export default function ChatMessages() {
   const { messages } = useSelector((state) => state.chat);
-  
+  const {user}=useSelector((state)=>state.user);
+
 
   return (
     // bg-[url('https://w7.pngwing.com/pngs/81/570/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo-thumbnail.png')]
@@ -15,7 +16,7 @@ export default function ChatMessages() {
 
         {
           messages && messages.map((message)=>(
-            <Message message={message} key={message._id}/>
+            <Message message={message} key={message._id} me={user._id===message.sender._id}/>
           ))
         }
         
