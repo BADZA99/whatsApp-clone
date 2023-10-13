@@ -16,7 +16,7 @@ export default function ChatMessages() {
 
         {
           messages && messages.map((message)=>(
-            <Message message={message} key={message._id} me={user._id===message.sender._id}/>
+            <Message message={message} key={message?._id} me={user?._id===message.sender?._id}/>
           ))
         }
         

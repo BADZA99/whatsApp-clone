@@ -11,7 +11,7 @@ export default function Message({message,me}) {
             {/* message */}
             <p className="float-left h-full text-sm pb-5 text-dark_text_5">{message.message}</p>
             {/* message time */}
-            <span>{moment(message.createdAt).format("HH:mm")}</span>
+            <span className=''>{moment(message.createdAt).format("HH:mm")}</span>
             {/* triangle */}
             {
                 !me ? ( <span>
