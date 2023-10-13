@@ -1,5 +1,5 @@
 import logger from "../configs/logger.config.js";
-import { createMessage, getConvoMessages, populateMessage } from "../routes/message.service.js";
+import { createMessage, getConvoMessages, populateMessage } from "../services/message.service.js";
 import { updateLatestMessage } from "../services/conversation.service.js";
 import { getConversations } from "./conversation.controller.js";
 

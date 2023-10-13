@@ -143,15 +143,15 @@ export const chatSlice=createSlice({
           .addCase(sendMessage.fulfilled, (state, action) => {
             state.status = "succeeded";
             state.messages = [...state.messages, action.payload];
-            // let conversation = {
-            //   ...action.payload.conversation,
-            //   latestMessage: action.payload,
-            // };
-            // let newConvos = [...state.conversations].filter(
-            //   (c) => c._id !== conversation._id
-            // );
-            // newConvos.unshift(conversation);
-            // state.conversations = newConvos;
+            let conversation = {
+              ...action.payload.conversation,
+              latestMessage: action.payload,
+            };
+            let newConvos = [...state.conversations].filter(
+              (c) => c._id !== conversation._id
+            );
+            newConvos.unshift(conversation);
+            state.conversations = newConvos;
             // state.files = [];
           })
           .addCase(sendMessage.rejected, (state, action) => {

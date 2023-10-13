@@ -24,7 +24,7 @@ export default function Conversation({convo}) {
             <div className="flex items-center gap-x-3">
                 {/* conversation user picture */}
                 <div className="relative min-w-[50px] max-w-[50px] h-[50px] rounded-full overflow-hidden">
-                    <img src={convo.picture} alt={convo.name} className='w-full h-full object-cover' />
+                    <img src={convo?.picture} alt={convo.name} className='w-full h-full object-cover' />
                 </div>
                 {/* conversation name and message */}
                 <div className="flex flex-col">
