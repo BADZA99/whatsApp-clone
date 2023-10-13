@@ -7,9 +7,14 @@ import { SendIcon } from '../../../svg'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { sendMessage } from '../../../features/chatSlice'
+import { useRef } from 'react'
 
 export default function ChatActions() {
     const dispatch=useDispatch();
+    const [showPicker, setShowPicker] = useState(false);
+    const [showAttachments, setShowAttachments] = useState(false);
+    const textRef = useRef();
+    const [loading, setLoading] = useState(false);
     const [message,setMessage]=useState("");
     const { activeConversation,status } = useSelector((state) => state.chat);
     const { user } = useSelector((state) => state.user);
@@ -34,11 +39,18 @@ export default function ChatActions() {
       <div className="w-full flex items-center gap-x-2">
         {/* emojies and attachement */}
         <ul className='flex gap-x-2'>
-            <EmojiPickerApp/>
+           <EmojiPickerApp
+            textRef={textRef}
+            message={message}
+            setMessage={setMessage}
+            showPicker={showPicker}
+            setShowPicker={setShowPicker}
+            setShowAttachments={setShowAttachments}
+          />
             <Attachements/>
         </ul>
         {/* input */}
-        <Input message={message} setMessage={setMessage}/>
+        <Input message={message} setMessage={setMessage} textRef={textRef}/>
         {/* send button */}
         <button type='submit' className='btn'>
             {
