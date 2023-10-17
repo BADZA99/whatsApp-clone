@@ -8,7 +8,7 @@ import { ChatActions } from './actions';
 
 export default function ChatContainer() {
     const dispatch=useDispatch();
-    const { activeConversation,messages } = useSelector((state) => state.chat);
+    const { activeConversation } = useSelector((state) => state.chat);
     const { user } = useSelector((state) => state.user);
     const {token}=user;
     const values={

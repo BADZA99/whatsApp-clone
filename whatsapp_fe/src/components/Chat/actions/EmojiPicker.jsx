@@ -23,7 +23,7 @@ export default function EmojiPickerApp({
     const newText = start + emoji + end;
     setMessage(newText);
     setCursorPosition(start.length + emoji.length);
-    console.log(ref)
+    // console.log(ref)
   };
   return (
     <li className="w-full">

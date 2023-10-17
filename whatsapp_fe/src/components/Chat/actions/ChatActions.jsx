@@ -1,6 +1,6 @@
 import React from 'react'
 import EmojiPickerApp from './EmojiPicker'
-import Attachements from './Attachements'
+
 import ClipLoader from "react-spinners/ClipLoader"
 import Input from './Input'
 import { SendIcon } from '../../../svg'
@@ -8,6 +8,7 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { sendMessage } from '../../../features/chatSlice'
 import { useRef } from 'react'
+import { Attachements } from './Attachements'
 
 export default function ChatActions() {
     const dispatch=useDispatch();
@@ -47,7 +48,7 @@ export default function ChatActions() {
             setShowPicker={setShowPicker}
             setShowAttachments={setShowAttachments}
           />
-            <Attachements/>
+            <Attachements showAttachments={showAttachments} setShowAttachments={setShowAttachments} setShowPicker={setShowPicker} />
         </ul>
         {/* input */}
         <Input message={message} setMessage={setMessage} textRef={textRef}/>
