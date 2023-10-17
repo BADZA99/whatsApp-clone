@@ -28,8 +28,10 @@ export default function ChatActions() {
     }
     const SendMessageHandler= async (e)=>{
         e.preventDefault();
+        setLoading(true)
         await dispatch(sendMessage(values)); 
         setMessage(""); 
+        setLoading(false)
     }
 
   return (
@@ -55,7 +57,7 @@ export default function ChatActions() {
         {/* send button */}
         <button type='submit' className='btn'>
             {
-                status==="loading" ? <ClipLoader color="#E9EDEF" size={25}/>: <SendIcon className="dark:fill-dark_svg_1"/>
+                status==="loading" && loading ? <ClipLoader color="#E9EDEF" size={25}/>: <SendIcon className="dark:fill-dark_svg_1"/>
 
             }
             
