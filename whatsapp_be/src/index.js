@@ -1,4 +1,5 @@
 import app from "./app.js";
+import {Server} from "socket.io"
 import mongoose from "mongoose"
 // logger permet de personnaliser notre terminal histoire de savoir ce qui se passe c a d differiencer les erreurs des informations
 import logger from './configs/logger.config.js';
@@ -46,6 +47,22 @@ server = app.listen(PORT,()=>{
     // throw new Error("error is server");
 });
 
+// socket io
+
+const io = new Server(server, {
+  pingTimeout: 60000,
+  cors: {
+    origin: process.env.CLIENT_ENDPOINT,
+  },
+});
+
+// socket io connection
+io.on("connection", (socket) => {
+  logger.info(`socket io is connected:`);
+  socket.on("disconnect", () => {
+    logger.info(`Client disconnected: ${socket.id}`);
+  });
+});
 
 // handle server error
 const exitHandler=()=>{

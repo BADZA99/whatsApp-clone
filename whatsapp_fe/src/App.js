@@ -1,4 +1,5 @@
 import { BrowserRouter as Router,Routes,Route, Navigate } from 'react-router-dom';
+import {io} from "socket.io-client"
 import './index.css';
 import Home from './pages/home';
 import Login from './pages/login';
@@ -9,9 +10,7 @@ import {  useSelector } from 'react-redux';
 
 
 function App() {
-  const {user}=useSelector((state)=>state.user);
-  const {token}=user;
-  // console.log(user);
+  const socket = io(process.env.REACT_APP_API_ENDPOINT.split("/api/v1")[0]);
   return (
     <div className="dark">
       <Router>
