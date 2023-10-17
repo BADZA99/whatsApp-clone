@@ -10,7 +10,7 @@ export default function Sidebar() {
     // console.log(searchResults);
   return (
     <div
-    className='w-[40%] h-full select-none'
+    className=' flex0030 max-w-[30%] h-full select-none'
     >
         {/* Sidebar header */}
       <SidebarHeader/>
